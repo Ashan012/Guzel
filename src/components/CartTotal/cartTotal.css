@@ -1,0 +1,37 @@
+.cart-total {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  color: #555;
+}
+.cart-total hr {
+  margin: 10px 0;
+}
+.cart-total button {
+  border: none;
+  color: white;
+  background-color: tomato;
+  padding: 12px 0;
+  border-radius: 4px;
+  width: max(15vw, 200px);
+  cursor: pointer;
+}
+
+@media (max-width: 750px) {
+  .cart-bottom {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 450px) {
+  .cart-total h2 {
+    font-size: 25px;
+    font-weight: 500;
+  }
+}
