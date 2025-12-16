@@ -1,19 +1,22 @@
 .place-order {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   gap: 50px;
   margin-top: 100px;
 }
+
 .place-order-left {
   width: 100%;
   max-width: max(30%, 500px);
 }
+
 .place-order-left .title {
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 50px;
 }
+
 .place-order-left input {
   width: 100%;
   margin-bottom: 15px;
@@ -26,20 +29,36 @@
 .place-order-left .multi-feilds {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap; /* mobile friendly */
 }
+
+.place-order-left .multi-feilds input {
+  flex: 1 1 48%; /* two fields side by side, responsive */
+}
+
 .place-order-right {
   width: 100%;
   max-width: max(40%, 500px);
 }
+
+/* Mobile responsiveness */
 @media (max-width: 600px) {
   .place-order {
     flex-direction: column;
+    gap: 30px;
     margin-top: 50px;
   }
+
+  .place-order-left,
+  .place-order-right {
+    max-width: 100%;
+  }
 }
+
 @media (max-width: 450px) {
   .place-order-left .title {
     font-size: 25px;
     font-weight: 500;
+    margin-bottom: 30px;
   }
 }

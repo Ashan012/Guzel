@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { food_list } from "../assets/frontend_assets/assets";
+import { product_list } from "../assets/frontend_assets/assets";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
@@ -20,7 +20,7 @@ const StoreContextProvider = (props) => {
     let totalAmount = 0;
     for (const item in cartItem) {
       if (cartItem[item] > 0) {
-        let itemInfo = food_list.find((product) => product._id === item);
+        let itemInfo = product_list.find((product) => product._id === item);
         totalAmount += itemInfo.price * cartItem[item];
       }
     }
@@ -28,7 +28,7 @@ const StoreContextProvider = (props) => {
   };
 
   const contextValue = {
-    food_list,
+    product_list,
     cartItem,
     addToCart,
     removeCart,

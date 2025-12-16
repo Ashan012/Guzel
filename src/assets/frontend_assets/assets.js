@@ -118,7 +118,7 @@ export const menu_list = [
   },
 ];
 
-export const food_list = [
+export const product_list = [
   {
     _id: "1",
     name: "Herbal Glow Cream",

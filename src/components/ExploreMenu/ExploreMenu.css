@@ -14,11 +14,13 @@
 .explore-menu-list {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   text-align: center;
   gap: 30px;
   margin: 20px 0;
-  overflow-x: scroll;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  /* overflow: visible; */
 }
 .explore-menu-list::-webkit-scrollbar {
   display: none;
@@ -45,10 +47,23 @@
 .explore-menu-list-item .active {
   border: 2px solid tomato;
   padding: 2px;
+  border-radius: 50%;
 }
 @media (max-width: 900px) {
   .explore-menu-text {
     max-width: 100%;
     font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .explore-menu-list {
+    gap: 15px;
+  }
+  .explore-menu-list-item img {
+    min-width: 60px;
+    width: 20vw; /* responsive */
+  }
+  .explore-menu-list-item p {
+    font-size: 12px;
   }
 }

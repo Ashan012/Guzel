@@ -1,10 +1,10 @@
 .app-download {
-  margin: auto auto;
-  margin-top: 100px;
+  margin: 100px auto 50px auto;
   text-align: center;
   font-size: max(3vw, 20px);
   font-weight: 500;
 }
+
 .app-download-platform {
   display: flex;
   justify-content: center;
@@ -18,6 +18,19 @@
   transition: 0.5s;
   cursor: pointer;
 }
-.app-download-platform img:hover {
-  transform: scale(1.05);
+
+/* Hover effect handled by Framer Motion */
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .app-download {
+    font-size: 18px;
+  }
+  .app-download-platform {
+    gap: 15px;
+  }
+  .app-download-platform img {
+    width: 40vw;
+    max-width: 140px;
+  }
 }

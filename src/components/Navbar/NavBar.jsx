@@ -1,58 +1,74 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./Navbar.css";
 import { assets } from "../../assets/frontend_assets/assets";
-import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/storecontext";
 
 const NavBar = ({ setIsLogin }) => {
   const { getTotalAmount } = useContext(StoreContext);
   const [menu, setmenu] = useState("");
+
+  const menuItems = [
+    { name: "home", link: "/" },
+    { name: "menu", link: "#explore-menu" },
+    { name: "mobile-app", link: "#footer" },
+    { name: "contact-us", link: "#appDownload" },
+  ];
+
   return (
-    <div className="navbar">
+    <motion.div
+      className="navbar"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <Link to="/">
         <img src={assets.logo} alt="logo" className="logo" />
       </Link>
+
       <ul className="navbar-menu">
-        <Link
-          to="/"
-          onClick={() => setmenu("home")}
-          className={menu === "home" ? "active" : ""}
-        >
-          Home
-        </Link>
-        <a
-          href="#explore-menu"
-          onClick={() => setmenu("menu")}
-          className={menu === "menu" ? "active" : ""}
-        >
-          menu
-        </a>
-        <a
-          href="#footer"
-          onClick={() => setmenu("mobile-app")}
-          className={menu === "mobile-app" ? "active" : ""}
-        >
-          mobile app
-        </a>
-        <a
-          href="#appDownload"
-          onClick={() => setmenu("contact-us")}
-          className={menu === "contact-us" ? "active" : ""}
-        >
-          contact us
-        </a>
+        {menuItems.map((item) => (
+          <motion.li
+            key={item.name}
+            whileHover={{ scale: 1.1, color: "#ff6347" }}
+            onClick={() => setmenu(item.name)}
+            className={menu === item.name ? "active" : ""}
+          >
+            {item.name === "home" ? (
+              <Link to={item.link}>{item.name}</Link>
+            ) : (
+              <a href={item.link}>{item.name}</a>
+            )}
+          </motion.li>
+        ))}
       </ul>
+
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
+        <img src={assets.search_icon} alt="search" />
+
         <div className="navbar-search-icon">
           <Link to="/cart">
-            <img src={assets.basket_icon} alt="" />
+            <img src={assets.basket_icon} alt="cart" />
           </Link>
-          <div className={getTotalAmount() === 0 ? "" : "dot"}></div>
+          {getTotalAmount() > 0 && (
+            <motion.div
+              className="dot"
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            ></motion.div>
+          )}
         </div>
-        <button onClick={() => setIsLogin(true)}>signin</button>
+
+        <motion.button
+          whileHover={{ scale: 1.05, backgroundColor: "#fff4f2" }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsLogin(true)}
+        >
+          signin
+        </motion.button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
